@@ -1,4 +1,4 @@
-require ('dotenv').config();
+require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -18,8 +18,8 @@ mongoose
 
 app.get('/', (req, res) => {
     res.send('Test CV');
-})
+});
 
 app.listen(3000, () => {
-    console.log("Server is running on port 3000")
-})
+    console.log('Server is running on port 3000');
+});
