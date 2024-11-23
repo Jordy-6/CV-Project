@@ -56,6 +56,25 @@ module.exports = {
         }
     },
 
+    getCvById: async (req, res) => {
+        try {
+            const cvId = req.params.id;
+            const cv = await CvModel.findById(cvId);
+            if (!cv) {
+                return res.status(404).send({
+                    message: `Cv with id: ${cvId} not found`
+                });
+            }
+            res.send({
+                cv: cv
+            });
+        } catch (error) {
+            res.status(500).send({
+                message: error.message || `Cannot retrive cv with id: ${req.params.id}`
+            });
+        }
+    },
+
     updateCv: async (req, res) => {
         try {
             const cvId = req.params.id;

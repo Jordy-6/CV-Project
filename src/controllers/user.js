@@ -20,8 +20,6 @@ module.exports = {
 
     updateInfos: async (req, res) => {
         try {
-            const userId = req.params.id;
-
             const isInfoInvalid = verifyUser(req.body);
             if (isInfoInvalid) {
                 req.status(400).send({
@@ -29,13 +27,15 @@ module.exports = {
                 });
             }
 
-            const updatedInfos = await UserModel.findByIdAndUpdate(userId, req.body, {
+            const { id } = req.user;
+
+            const updatedInfos = await UserModel.findByIdAndUpdate(id, req.body, {
                 new: true
             });
 
             if (!updatedInfos) {
                 res.status(404).send({
-                    message: `User with id : ${userId} not found`
+                    message: `User with id : ${id} not found`
                 });
             }
 

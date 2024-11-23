@@ -8,7 +8,7 @@ router.get('/', verifyToken, cvController.getAllCv);
 
 router.get('/:firstname', verifyToken, cvController.getAllCvByUser);
 
-// to do : add router to get cv by id
+router.get('/:id', verifyToken, cvController.getCvById);
 
 router.put('/:id', verifyToken, cvController.updateCv);
 
