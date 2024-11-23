@@ -5,7 +5,7 @@ const CertificationSchema = require('./Certification');
 const FormationSchema = require('./Formation');
 const JobSchema = require('./Job');
 const MissionSchema = require('./Mission');
-const CompagniesSchema = require('./Compagny');
+const CompagniesSchema = require('./Company');
 
 const CvSchema = new Schema(
     {

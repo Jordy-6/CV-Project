@@ -1,9 +1,15 @@
 const { Validator } = require('jsonschema');
+const validateDiplome = require('./diplome');
+const validateCertification = require('./certification');
+const validateCompany = require('./company');
+const validateFormation = require('./formation');
+const validateJob = require('./job');
+const validateMission = require('./mission');
 
 module.exports = {
     verifyCv: (cv) => {
-        let validator = new Validator();
-        let cvSchema = {
+        const validator = new Validator();
+        const cvSchema = {
             type: 'object',
             properties: {
                 userid: {
@@ -30,33 +36,33 @@ module.exports = {
                 },
                 diplomes: {
                     type: 'array',
-                    items: { type: 'string' },
-                    errorMessage: 'Diplomes should be an array of strings'
+                    items: { type: 'object' },
+                    errorMessage: 'Diplomes should be an array of objects'
                 },
                 certifications: {
                     type: 'array',
-                    items: { type: 'string' },
-                    errorMessage: 'Certifications should be an array of strings'
+                    items: { type: 'object' },
+                    errorMessage: 'Certifications should be an array of objects'
                 },
                 formations: {
                     type: 'array',
-                    items: { type: 'string' },
-                    errorMessage: 'Formations should be an array of strings'
+                    items: { type: 'object' },
+                    errorMessage: 'Formations should be an array of objects'
                 },
                 jobs: {
                     type: 'array',
-                    items: { type: 'string' },
-                    errorMessage: 'Jobs should be an array of strings'
+                    items: { type: 'object' },
+                    errorMessage: 'Jobs should be an array of objects'
                 },
                 missions: {
                     type: 'array',
-                    items: { type: 'string' },
-                    errorMessage: 'Missions should be an array of strings'
+                    items: { type: 'object' },
+                    errorMessage: 'Missions should be an array of objects'
                 },
                 compagnies: {
                     type: 'array',
-                    items: { type: 'string' },
-                    errorMessage: 'Compagnies should be an array of strings'
+                    items: { type: 'object' },
+                    errorMessage: 'Compagnies should be an array of objects'
                 },
                 visible: {
                     type: 'boolean',
@@ -65,18 +71,64 @@ module.exports = {
             },
             required: ['firstname', 'lastname', 'description', 'visible']
         };
-        let result = validator.validate(cv, cvSchema);
 
-        // if validation failed
-        if (Array.isArray(result.errors) && result.errors.length) {
-            let failedInputs = '';
-
-            result.errors.forEach((error) => {
-                failedInputs += (error.schema.error || error.message) + ', ';
-            });
+        // Étape 1 : Validation principale du schéma
+        const result = validator.validate(cv, cvSchema);
+        if (result.errors.length) {
             return {
-                message: failedInputs
+                message: result.errors.map((err) => err.schema.errorMessage || err.message).join(', ')
             };
         }
+
+        // Étape 2 : Validation des sous-champs
+        const errors = [];
+
+        if (cv.diplomes) {
+            cv.diplomes.forEach((diplome) => {
+                const error = validateDiplome(diplome);
+                if (error) errors.push(error);
+            });
+        }
+
+        if (cv.certifications) {
+            cv.certifications.forEach((certification) => {
+                const error = validateCertification(certification);
+                if (error) errors.push(error);
+            });
+        }
+
+        if (cv.formations) {
+            cv.formations.forEach((formation) => {
+                const error = validateFormation(formation);
+                if (error) errors.push(error);
+            });
+        }
+
+        if (cv.jobs) {
+            cv.jobs.forEach((job) => {
+                const error = validateJob(job);
+                if (error) errors.push(error);
+            });
+        }
+
+        if (cv.missions) {
+            cv.missions.forEach((mission) => {
+                const error = validateMission(mission);
+                if (error) errors.push(error);
+            });
+        }
+
+        if (cv.compagnies) {
+            cv.compagnies.forEach((company) => {
+                const error = validateCompany(company);
+                if (error) errors.push(error);
+            });
+        }
+
+        if (errors.length) {
+            return { message: errors.join(', ') };
+        }
+
+        return null;
     }
 };
