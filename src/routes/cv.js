@@ -6,7 +6,7 @@ router.post('/', verifyToken, cvController.createCv);
 
 router.get('/', verifyToken, cvController.getAllCv);
 
-router.get('/:firstname', verifyToken, cvController.getAllCvByUser);
+router.get('/me/:id', verifyToken, cvController.getAllCvByUser);
 
 router.get('/:id', verifyToken, cvController.getCvById);
 

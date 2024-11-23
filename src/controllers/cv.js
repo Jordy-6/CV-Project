@@ -12,16 +12,13 @@ module.exports = {
                 });
             }
 
-            const newCv = new CvModel(req.body);
-            newCv.userid = req.user;
-            newCv.save();
+            const { id } = req.user;
 
-            const { id, firstname, lastname } = req.user;
-            newCv.userid = {
-                id,
-                firstname,
-                lastname
-            };
+            const newCv = new CvModel({
+                ...req.body,
+                userid: id
+            });
+            newCv.save();
 
             res.status(201).send({
                 success: true,
@@ -47,7 +44,7 @@ module.exports = {
 
     getAllCvByUser: async (req, res) => {
         try {
-            const cv = await CvModel.find({ userid: req.params.firstname });
+            const cv = await CvModel.find({ userid: req.params.id });
             res.send(cv);
         } catch (error) {
             res.status(500).send({
