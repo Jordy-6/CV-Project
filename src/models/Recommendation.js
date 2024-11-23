@@ -5,7 +5,7 @@ const RecommendationSchema = new Schema(
     {
         userid: {
             type: Schema.ObjectId,
-            ref: 'User',
+            ref: 'CvUser',
             required: false
         },
         cvid: {
