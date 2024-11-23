@@ -23,6 +23,6 @@ const RecommendationSchema = new Schema(
     }
 );
 
-const Recommendations = mongoose.model('User', RecommendationSchema);
+const Recommendations = mongoose.model('Recommendation', RecommendationSchema);
 
 module.exports = Recommendations;
