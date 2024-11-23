@@ -1,11 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const DiplomeSchema = require('./Diplome');
+const CertificationSchema = require('./Certification');
+const FormationSchema = require('./Formation');
+const JobSchema = require('./Job');
+const MissionSchema = require('./Mission');
+const CompagniesSchema = require('./Compagny');
 
 const CvSchema = new Schema(
     {
         userid: {
             type: Schema.ObjectId,
-            ref: 'User',
+            ref: 'CvUser',
             required: false
         },
         firstname: {
@@ -21,27 +27,27 @@ const CvSchema = new Schema(
             required: true
         },
         diplomes: {
-            type: Array,
+            type: [DiplomeSchema],
             required: false
         },
         certifications: {
-            type: Array,
+            type: [CertificationSchema],
             required: false
         },
         formations: {
-            type: Array,
+            type: [FormationSchema],
             required: false
         },
         jobs: {
-            type: Array,
+            type: [JobSchema],
             required: false
         },
         missions: {
-            type: Array,
+            type: [MissionSchema],
             required: false
         },
         compagnies: {
-            type: Array,
+            type: [CompagniesSchema],
             required: false
         },
         visible: {
