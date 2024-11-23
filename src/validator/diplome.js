@@ -4,10 +4,10 @@ const DiplomeSchema = {
     type: 'object',
     properties: {
         title: { type: 'string', minLength: 1, errorMessage: 'Diplome title is missing or invalid' },
-        school: { type: 'string', minLength: 1, errorMessage: 'Diplome institution is missing or invalid' },
+        school: { type: 'string', minLength: 1, errorMessage: 'Diplome school is missing or invalid' },
         year: { type: 'integer', minimum: 1950, errorMessage: 'Diplome year must be a valid year or is missing' }
     },
-    required: ['title', 'institution', 'year']
+    required: ['title', 'school', 'year']
 };
 
 const validateDiplome = (diplome) => {
