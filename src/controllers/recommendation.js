@@ -1,4 +1,4 @@
-const verifyRecommendation = require('../validator/recommendation');
+const { verifyRecommendation } = require('../validator/recommendation');
 const RecommendationModel = require('../models/Recommendation');
 
 module.exports = {

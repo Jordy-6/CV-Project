@@ -2,7 +2,7 @@ const router = require('express').Router();
 const recommendationController = require('../controllers/recommendation');
 const { verifyToken } = require('../middleware/jwt');
 
-router.post('/', verifyToken, recommendationController.createRecommendation);
+router.post('/cv/:id', verifyToken, recommendationController.createRecommendation);
 
 router.get('/cv/:id', verifyToken, recommendationController.getAllRecommendationsByCv);
 

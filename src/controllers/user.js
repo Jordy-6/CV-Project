@@ -1,14 +1,15 @@
 const UserModel = require('../models/User');
-const verifyUser = require('../validator/user');
+const { verifyUser } = require('../validator/user');
 
 module.exports = {
     getMyInfos: async (req, res) => {
         try {
-            const { id, firstName, lastName, email } = req.user;
+            const { id, firstname, lastname, email } = req.user;
+            console.log;
             res.send({
                 id,
-                firstName,
-                lastName,
+                firstname,
+                lastname,
                 email
             });
         } catch (error) {
@@ -22,7 +23,7 @@ module.exports = {
         try {
             const isInfoInvalid = verifyUser(req.body);
             if (isInfoInvalid) {
-                req.status(400).send({
+                res.status(400).send({
                     error: isInfoInvalid.message
                 });
             }
