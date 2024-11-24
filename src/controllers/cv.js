@@ -115,8 +115,9 @@ module.exports = {
                 });
             }
 
-            res.status(204).send({
-                message: 'CV was successfully deleted'
+            res.status(200).send({
+                message: 'CV was successfully deleted',
+                data: cv
             });
         } catch (error) {
             res.status(500).send({

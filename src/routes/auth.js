@@ -16,6 +16,8 @@ const authController = require('../controllers/auth');
  *     description: Creates a new user account with the provided details.
  *     tags:
  *       - Authentication
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -85,6 +87,8 @@ router.post('/register', authController.register);
  *     description: Logs in a user and returns a JWT token for authenticated access.
  *     tags:
  *       - Authentication
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
