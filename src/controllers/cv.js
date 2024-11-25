@@ -72,6 +72,38 @@ module.exports = {
         }
     },
 
+    getCvByFirstName: async (req, res) => {
+        try {
+            const cv = await CvModel.find({ firstname: req.params.firstname });
+            if (!cv || cv.length === 0) {
+                return res.status(404).send({
+                    message: `Cv with firstname: ${req.params.firstname} not found`
+                });
+            }
+            res.status(200).send(cv);
+        } catch (error) {
+            res.status(500).send({
+                message: error.message || `Cannot retrive cv with firstName: ${req.params.firstname}`
+            });
+        }
+    },
+
+    getCvByLastName: async (req, res) => {
+        try {
+            const cv = await CvModel.find({ lastname: req.params.lastname });
+            if (!cv || cv.length === 0) {
+                return res.status(404).send({
+                    message: `Cv with lastname: ${req.params.lastname} not found`
+                });
+            }
+            res.status(200).send(cv);
+        } catch (error) {
+            res.status(500).send({
+                message: error.message || `Cannot retrive cv with lastName: ${req.params.lastname}`
+            });
+        }
+    },
+
     updateCv: async (req, res) => {
         try {
             const cvId = req.params.id;
