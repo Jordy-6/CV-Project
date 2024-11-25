@@ -761,7 +761,7 @@ router.get('/:id', verifyToken, cvController.getCvById);
  *         required: true
  *         schema:
  *           type: string
- *         description: CVs of all the specific lastname to retrieve
+ *         description: CVs of all the specific firstname to retrieve
  *     responses:
  *       200:
  *         description: Successfully retrieved the CV.
@@ -892,10 +892,10 @@ router.get('/:id', verifyToken, cvController.getCvById);
  *                   type: boolean
  *                   description: Visibility status of the CV.
  *                   example: true
- *       404:
- *         description: CV with firstname: firstname not found.
- *       401:
+ *       401: 
  *         description: Unauthorized - Invalid or missing token.
+ *       404:
+ *         description: "CV with firstname: {firstname} not found."
  *       500:
  *         description: Internal server error.
  */
@@ -1047,7 +1047,7 @@ router.get('/firstname/:firstname', cvController.getCvByFirstName);
  *                   description: Visibility status of the CV.
  *                   example: true
  *       404:
- *         description: CV with lastname: lastname not found.
+ *         description: "CV with lastname: {lastname} not found."
  *       401:
  *         description: Unauthorized - Invalid or missing token.
  *       500:
