@@ -749,7 +749,7 @@ router.get('/me/:id', verifyToken, cvController.getAllCvByUser);
  *       500:
  *         description: Internal server error.
  */
-router.get('/:id', cvController.getCvById);
+router.get('/:id', verifyToken, cvController.getCvById);
 
 /**
  * @swagger
