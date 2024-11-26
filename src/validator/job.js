@@ -4,8 +4,8 @@ const JobSchema = {
     type: 'object',
     properties: {
         title: { type: 'string', minLength: 1, errorMessage: 'Job title is required' },
-        startYear: { type: 'number', minimum: 1900, errorMessage: 'Job starting year is invalid or required' },
-        endYear: { type: 'number', minimum: 1900, errorMessage: 'Job ending year is invalid' }
+        startYear: { type: 'number', errorMessage: 'Job starting year must be an integer' },
+        endYear: { type: 'number', errorMessage: 'Job ending year must be an integer' }
     },
     required: ['title', 'startYear']
 };

@@ -5,7 +5,7 @@ const DiplomeSchema = {
     properties: {
         title: { type: 'string', minLength: 1, errorMessage: 'Diplome title is missing or invalid' },
         school: { type: 'string', minLength: 1, errorMessage: 'Diplome school is missing or invalid' },
-        year: { type: 'integer', minimum: 1950, errorMessage: 'Diplome year must be a valid year or is missing' }
+        year: { type: 'integer', errorMessage: 'Diplome year must be an integer' }
     },
     required: ['title', 'school', 'year']
 };

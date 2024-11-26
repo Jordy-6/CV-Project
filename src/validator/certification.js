@@ -5,7 +5,7 @@ const CertificationSchema = {
     properties: {
         name: { type: 'string', minLength: 1, errorMessage: 'Certification name is missing or invalid' },
         issuedBy: { type: 'string', minLength: 1, errorMessage: 'Certification issuer is invalid' },
-        year: { type: 'integer', minimum: 1900, errorMessage: 'Certification year must be a valid year or is missing' }
+        year: { type: 'integer', errorMessage: 'Certification year must be an integer' }
     },
     required: ['name', 'year']
 };

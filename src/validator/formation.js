@@ -5,7 +5,7 @@ const FormationSchema = {
     properties: {
         name: { type: 'string', minLength: 2, errorMessage: 'Formation title is missing or invalid' },
         institution: { type: 'string', minLength: 1, errorMessage: 'Formation institution is missing or invalid' },
-        year: { type: 'integer', minimum: 1950, errorMessage: 'Formation year must be valid or is missing' }
+        year: { type: 'integer', errorMessage: 'Formation year must be valid or is missing' }
     },
     required: ['name', 'institution', 'year']
 };
