@@ -749,19 +749,19 @@ router.get('/:id', verifyToken, cvController.getCvById);
 
 /**
  * @swagger
- * /api/cv/firstname/{firstname}:
+ * /api/cv/name/{name}:
  *   get:
- *     summary: Get all CVs with name
- *     description: Retrieves all CVs with a specific firstname.
+ *     summary: Get all CVs with a specific firstname or lastname
+ *     description: Retrieves all CVs with a specific firstname or lastname.
  *     tags:
  *       - CV
  *     parameters:
  *       - in: path
- *         name: firstname
+ *         name: name
  *         required: true
  *         schema:
  *           type: string
- *         description: CVs of all the specific firstname to retrieve
+ *         description: CVs of all the specific firstname or lastname to retrieve
  *     responses:
  *       200:
  *         description: Successfully retrieved the CV.
@@ -892,168 +892,14 @@ router.get('/:id', verifyToken, cvController.getCvById);
  *                   type: boolean
  *                   description: Visibility status of the CV.
  *                   example: true
- *       401: 
+ *       401:
  *         description: Unauthorized - Invalid or missing token.
  *       404:
  *         description: "CV with firstname: {firstname} not found."
  *       500:
  *         description: Internal server error.
  */
-router.get('/firstname/:firstname', cvController.getCvByFirstName);
-
-/**
- * @swagger
- * /api/cv/lastname/{lastname}:
- *   get:
- *     summary: Get all CVs with name
- *     description: Retrieves all CVs with a specific lastname.
- *     tags:
- *       - CV
- *     parameters:
- *       - in: path
- *         name: lastname
- *         required: true
- *         schema:
- *           type: string
- *         description: CVs of all the specific lastname to retrieve.
- *     responses:
- *       200:
- *         description: Successfully retrieved the CV.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 id:
- *                   type: string
- *                   description: The unique identifier of the CV.
- *                   example: "670507e5a85e8b4542098ab9"
- *                 userid:
- *                   type: string
- *                   description: The ID of the user who created the CV.
- *                   example: "670507e5a85e8b4542098ab9"
- *                 firstname:
- *                   type: string
- *                   description: The first name of the user.
- *                   example: John
- *                 lastname:
- *                   type: string
- *                   description: The last name of the user.
- *                   example: Doe
- *                 description:
- *                   type: string
- *                   description: A brief description of the CV.
- *                   example: "Experienced software developer."
- *                 diplomes:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       title:
- *                         type: string
- *                         description: The title of the diploma.
- *                         example: "Bachelor of Science in Computer Science"
- *                       school:
- *                         type: string
- *                         description: The school where the diploma was obtained.
- *                         example: "MIT"
- *                       year:
- *                         type: number
- *                         description: The year the diploma was obtained.
- *                         example: 2020
- *                 certifications:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       name:
- *                         type: string
- *                         description: The name of the certification.
- *                         example: "Certified Java Developer"
- *                       issuedBy:
- *                         type: string
- *                         description: The issuer of the certification.
- *                         example: "Oracle"
- *                       year:
- *                         type: number
- *                         description: The year the certification was obtained.
- *                         example: 2021
- *                 formations:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       name:
- *                         type: string
- *                         description: The name of the formation.
- *                         example: "Advanced React Training"
- *                       institution:
- *                         type: string
- *                         description: The institution where the formation was obtained.
- *                         example: "Coursera"
- *                       year:
- *                         type: number
- *                         description: The year the formation was obtained.
- *                         example: 2022
- *                 jobs:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       title:
- *                         type: string
- *                         description: The title of the job.
- *                         example: "Software Engineer"
- *                       startYear:
- *                         type: number
- *                         description: The year the job started.
- *                         example: 2019
- *                       endYear:
- *                         type: number
- *                         description: The year the job ended.
- *                         example: 2021
- *                 missions:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       name:
- *                         type: string
- *                         description: The name of the mission.
- *                         example: "Developed a new feature for the product"
- *                       description:
- *                         type: string
- *                         description: A brief description of the mission.
- *                         example: "Implemented a new feature that improved performance by 20%"
- *                 compagnies:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       name:
- *                         type: string
- *                         description: The name of the company.
- *                         example: "XYZ Corp"
- *                       location:
- *                         type: string
- *                         description: The location of the company.
- *                         example: "New York, NY"
- *                       industry:
- *                         type: string
- *                         description: The industry of the company.
- *                         example: "Technology"
- *                 visible:
- *                   type: boolean
- *                   description: Visibility status of the CV.
- *                   example: true
- *       404:
- *         description: "CV with lastname: {lastname} not found."
- *       401:
- *         description: Unauthorized - Invalid or missing token.
- *       500:
- *         description: Internal server error.
- */
-router.get('/lastname/:lastname', cvController.getCvByLastName);
+router.get('/name/:name', cvController.getCvByName);
 
 /**
  * @swagger
