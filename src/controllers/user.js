@@ -29,8 +29,16 @@ module.exports = {
                 });
             }
 
-            req.body.password = await bcrypt.hash(req.body.password, 10);
+            const userOldPassword = await UserModel.findById(req.user.id);
+            const isPasswordDuplicated = await bcrypt.compare(req.body.password, userOldPassword.password);
 
+            if (isPasswordDuplicated) {
+                res.status(403).send({
+                    error: 'You cannot use your old password'
+                });
+            }
+
+            req.body.password = await bcrypt.hash(req.body.password, 10);
             const { id } = req.user;
 
             const updatedInfos = await UserModel.findByIdAndUpdate(id, req.body, {

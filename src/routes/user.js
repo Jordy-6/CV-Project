@@ -126,6 +126,8 @@ router.post('/me', verifyToken, userController.getMyInfos);
  *                   example: Invalid user information
  *       401:
  *         description: Unauthorized - No token provided.
+ *       403:
+ *         description: You cannot use your old password.
  *       404:
  *         description: User not found.
  *         content:

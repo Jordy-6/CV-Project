@@ -29,8 +29,7 @@ module.exports = {
                     errorMessage: "User's password, must contain at least one uppercase letter and one digit",
                     pattern: '^(?=.*[A-Z])(?=.*[0-9]).+$'
                 }
-            },
-            
+            }
         };
         let result = validator.validate(user, userSchema);
 
