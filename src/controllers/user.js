@@ -21,7 +21,13 @@ module.exports = {
 
     updateInfos: async (req, res) => {
         try {
-            
+            const isInfoInvalid = verifyUser(req.body);
+            if (isInfoInvalid) {
+                res.status(400).send({
+                    error: isInfoInvalid.message
+                });
+            }
+
             const { id } = req.user;
 
             const updatedInfos = await UserModel.findByIdAndUpdate(id, req.body, {

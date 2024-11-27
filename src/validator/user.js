@@ -30,7 +30,7 @@ module.exports = {
                     pattern: '^(?=.*[A-Z])(?=.*[0-9]).+$'
                 }
             },
-            required: ['firstname', 'lastname', 'email', 'password']
+            
         };
         let result = validator.validate(user, userSchema);
 
