@@ -1,5 +1,6 @@
 const UserModel = require('../models/User');
 const { verifyUser } = require('../validator/user');
+const bcrypt = require('bcrypt');
 
 module.exports = {
     getMyInfos: async (req, res) => {
@@ -27,6 +28,8 @@ module.exports = {
                     error: isInfoInvalid.message
                 });
             }
+
+            req.body.password = await bcrypt.hash(req.body.password, 10);
 
             const { id } = req.user;
 
