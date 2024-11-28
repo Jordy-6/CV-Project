@@ -24,7 +24,7 @@ module.exports = {
         try {
             const isInfoInvalid = verifyUser(req.body);
             if (isInfoInvalid) {
-                res.status(400).send({
+                return res.status(400).send({
                     error: isInfoInvalid.message
                 });
             }
@@ -33,7 +33,7 @@ module.exports = {
             const isPasswordDuplicated = await bcrypt.compare(req.body.password, userOldPassword.password);
 
             if (isPasswordDuplicated) {
-                res.status(403).send({
+                return res.status(403).send({
                     error: 'You cannot use your old password'
                 });
             }
@@ -46,7 +46,7 @@ module.exports = {
             });
 
             if (!updatedInfos) {
-                res.status(404).send({
+                return res.status(404).send({
                     message: `User with id : ${id} not found`
                 });
             }
