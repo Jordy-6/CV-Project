@@ -74,13 +74,14 @@ module.exports = {
 
     getCvByName: async (req, res) => {
         try {
-            const { name } = req.params;
+            const name = req.params.name.trim();
 
-            // Assurez-vous que `name` est une chaîne non vide
             if (!name || typeof name !== 'string') {
                 return res.status(400).send({ message: 'Invalid name parameter' });
             }
-            const cv = await CvModel.find({ $or: [{ firstname: name }, { lastname: name }] });
+            const cv = await CvModel.find({
+                $or: [{ firstname: { $regex: new RegExp(name, 'i') } }, { lastname: { $regex: new RegExp(name, 'i') } }]
+            });
             if (!cv || cv.length === 0) {
                 return res.status(404).send({
                     message: `Cv with name or firstname: ${name} not found`
