@@ -60,21 +60,5 @@ module.exports = {
                 message: error.message
             });
         }
-    },
-
-    getUserInfos: async (req, res) => {
-        try {
-            const user = await UserModel.findById(req.params.id);
-            if (!user) {
-                return res.status(404).send({
-                    message: `User with id : ${req.params.id} not found`
-                });
-            }
-            res.status(200).send(user);
-        } catch (error) {
-            res.status(500).send({
-                message: error.message || 'Cannot retrieve user informations'
-            });
-        }
     }
 };
