@@ -28,18 +28,19 @@ module.exports = {
                     error: isInfoInvalid.message
                 });
             }
-
-            const userOldPassword = await UserModel.findById(req.user.id);
-            const isPasswordDuplicated = await bcrypt.compare(req.body.password, userOldPassword.password);
-
-            if (isPasswordDuplicated) {
-                return res.status(403).send({
-                    error: 'You cannot use your old password'
-                });
-            }
-
-            req.body.password = await bcrypt.hash(req.body.password, 10);
             const { id } = req.user;
+            if (req.body.password) {
+                const userOldPassword = await UserModel.findById(req.user.id);
+                const isPasswordDuplicated = await bcrypt.compare(req.body.password, userOldPassword.password);
+
+                if (isPasswordDuplicated) {
+                    return res.status(403).send({
+                        error: 'You cannot use your old password'
+                    });
+                }
+
+                req.body.password = await bcrypt.hash(req.body.password, 10);
+            }
 
             const updatedInfos = await UserModel.findByIdAndUpdate(id, req.body, {
                 new: true
