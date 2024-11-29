@@ -1,4 +1,4 @@
-# CV Builder Back
+# CV Builder Back : PEREIRA-ELENGA MAKOUALA Jordy - FAZER Nino 
 
 Une application web permettant de créer, consulter, modifier et recommander des CVs pour les utilisateurs.
 
@@ -51,7 +51,19 @@ Pour les utilisateurs authentifiés :
 
 ---
 
-## Frontend 🚀
-Le frontend de l'application est disponible sur un dépôt Git distinct.
+## API
+Afin de pouvoir tester vous-même l'api, vous vous dirigez vers ce [lien](https://cv-project-api.onrender.com/api-docs/).
+Vous tomberez sur le **Swagger** qui permet de documenter toutes les API mais aussi de les tester.
+![image](https://github.com/user-attachments/assets/283184be-b174-4012-bd94-01d15731b726)
 
-Lien vers le dépôt backend : [https://github.com/Jordy-6/CV-Project-back.git](https://github.com/nin-faz/CV-Project-Front)
+Pour les tester, vous devez vous connecter grâce au login, ensuite vous recuperez le token de la reponse que vous collez dans le **Authorize**
+![image](https://github.com/user-attachments/assets/4f42859e-e8bb-4335-8ad6-5859b45ea9c8)
+
+Vous aurez maintenant accès à toutes les API.
+
+---
+
+## Frontend 🚀
+Le frontend de l'application est disponible sur un dépôt Git distinct mais aussi déployé sur ce [lien](https://cv-project-front.onrender.com/).
+
+Lien vers le dépôt front : [https://github.com/nin-faz/CV-Project-Front.git](https://github.com/nin-faz/CV-Project-Front)
