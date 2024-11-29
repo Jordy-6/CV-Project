@@ -1,4 +1,6 @@
-# PEREIRA-ELENGA MAKOUALA Jordy - FAZER Nino 
+# PEREIRA-ELENGA MAKOUALA Jordy - FAZER Nino
+
+
 # CV Builder Back
 
 Une application web permettant de créer, consulter, modifier et recommander des CVs pour les utilisateurs.
@@ -64,7 +66,65 @@ Vous aurez maintenant accès à toutes les API.
 
 ---
 
-## Frontend 🚀
+## Technologies utilisées (Frontend) 💻
+
+- Node.js : Environnement JavaScript côté serveur.
+- Express.js : Framework pour la gestion des routes et middlewares.
+- Mongoose : ODM pour MongoDB.
+- JSON Web Tokens (JWT) : Pour l'authentification basée sur les tokens.
+- bcrypt : Pour le hachage des mots de passe.
+- CORS : Autorise les requêtes provenant d'autres origines.
+
+## Outils 🔧
+- Swagger UI : Documentation interactive de l'API.
+- ESLint : Pour la qualité du code.
+- Prettier : Formatage du code.
+- Git : Versioning.
+
+## Prérequis :
+Liste des différentes technologies et outils :
+- npm init
+- npm i demon
+- npm install --save-dev nodemon
+- npm install mongoose
+- npm i dotenv
+- npm install jsonschema
+- npm install bcrypt
+- npm install jsonwebtoken
+- npm install swagger-jsdoc
+- npm install swagger-ui-express
+- npm install cors
+- npm install prettier --save-dev
+- npm install eslint --save-dev
+- npx eslint --init
+
+## Installation et lancement du projet:
+Suivez les étapes ci-dessous pour configurer et lancer le projet en local :
+
+### Clonez le dépôt
+git clone https://github.com/Jordy-6/CV-Project-back.git
+
+### Accédez au répertoire du projet
+cd CV-Project-back
+
+### Installez les dépendances
+npm install
+
+### Lancez le serveur de développement en local
+npm run dev
+
+### Cliquez sur l'url qui vous sera indiqué
+http://localhost:5173
+
+## Déploiement 🌐
+Le backend de cette application a été déployé sur Render, assurant une API accessible à tous pour une expérience utilisateur fluide.
+
+URL de l'API : https://cv-project-api.onrender.com
+Vous pouvez accéder à la documentation complète de l'API via Swagger :
+
+Documentation API : [Swagger Documentation](https://cv-project-api.onrender.com/api-docs/)
+
+## Frontend (React) 🚀
 Le frontend de l'application est disponible sur un dépôt Git distinct mais aussi déployé sur ce [lien](https://cv-project-front.onrender.com/).
 
 Lien vers le dépôt front : [https://github.com/nin-faz/CV-Project-Front.git](https://github.com/nin-faz/CV-Project-Front)

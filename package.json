@@ -22,6 +22,7 @@
     },
     "homepage": "https://github.com/Jordy-6/Back_CV#readme",
     "dependencies": {
+        "back_cv": "file:",
         "bcrypt": "^5.1.1",
         "cors": "^2.8.5",
         "dotenv": "^16.4.5",
